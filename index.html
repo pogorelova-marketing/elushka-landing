@@ -1035,6 +1035,10 @@ window.ELUSHKA = {"updated": "09.08.2026", "source": "/Users/mariapogorelova/Dow
     var list = anyH ? byKind : byKind.filter(inStep);
 
     grid.innerHTML = '';
+    if(!list.length){
+      grid.innerHTML = '<p class="mod__empty">В этой высоте таких моделей нет. ' +
+        'Выберите другую высоту на шкале или нажмите «Показать все высоты».</p>';
+    }
     list.forEach(function(m){
       var el = card(m);
       grid.appendChild(el);
@@ -1088,6 +1092,20 @@ window.ELUSHKA = {"updated": "09.08.2026", "source": "/Users/mariapogorelova/Dow
       document.querySelectorAll('.chip').forEach(function(x){ x.setAttribute('aria-pressed','false'); });
       b.setAttribute('aria-pressed','true');
       kind = b.dataset.kind;
+
+      // если в выбранной высоте таких моделей нет — переходим на ближайшую, где они есть
+      if(!anyH){
+        var list = D.showcase.filter(function(m){ return kind === 'all' || m.kind === kind; });
+        if(!list.some(inStep)){
+          var best = -1, bestDist = 1e9;
+          STEPS.forEach(function(s, i){
+            var was = idx; idx = i;
+            var ok = list.some(inStep); idx = was;
+            if(ok && Math.abs(i - idx) < bestDist){ bestDist = Math.abs(i - idx); best = i; }
+          });
+          if(best >= 0) idx = best;
+        }
+      }
       render();
     });
   });
