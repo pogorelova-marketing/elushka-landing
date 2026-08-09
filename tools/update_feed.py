@@ -122,8 +122,11 @@ def main():
                 diam = (p.text or "").strip()
 
         fam = family_of(model)
+        # полное название как в фиде, но без высоты: «Елка литая Уральская 1.8 м» → «Елка литая Уральская»
+        full = re.sub(r"\s*\d+[.,]?\d*\s*(м|см)\s*$", "", model).strip()
         g = groups.setdefault(fam, {
             "family": fam,
+            "full_name": full,
             "picture": txt("picture"),
             "url": txt("url").split("?")[0],
             "heights": [],
