@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Политика конфиденциальности — Ёлушка by Max Christmas</title>
+<meta name="description" content="Как сайт Ёлушки обращается с персональными данными: что собираем, зачем, кому передаём и как отозвать согласие.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="assets/img/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32x32.png">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+
+<style>
+@font-face{font-family:'Elushka';src:url('assets/fonts/Elushka-Thin.otf') format('opentype');font-weight:200;font-style:normal;font-display:swap}
+@font-face{font-family:'Elushka';src:url('assets/fonts/Elushka-Book.otf') format('opentype');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'Elushka';src:url('assets/fonts/Elushka-Medium.otf') format('opentype');font-weight:500;font-style:normal;font-display:swap}
+
+:root{
+  --brown:#3a2c20;
+  --taupe:#998876;
+  --taupe-deep:#6b5d4f;
+  --cream:#f1ece3;
+  --paper:#f7f2ea;
+  --ink:#17140f;
+  --ink-soft:#5b5046;
+  --glow:#ffda00;
+  --line-l:rgba(23,20,15,.14);
+  --r:10px;
+  --r-sm:8px;
+  --pad:clamp(20px,4.4vw,58px);
+  --mono:ui-monospace,'SF Mono',SFMono-Regular,Menlo,Consolas,monospace;
+  --ease:cubic-bezier(.22,.61,.36,1);
+}
+*{box-sizing:border-box}
+body{
+  margin:0;background:var(--cream);color:var(--ink);
+  font-family:'Elushka',-apple-system,BlinkMacSystemFont,'Helvetica Neue',Arial,sans-serif;
+  font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased
+}
+a{color:inherit}
+::selection{background:var(--glow);color:var(--ink)}
+
+.hdr{background:var(--brown);position:sticky;top:0;z-index:10}
+.hdr__in{max-width:900px;margin:0 auto;padding:18px var(--pad);display:flex;align-items:center;justify-content:space-between;gap:20px}
+.hdr__in img{height:clamp(38px,4vw,52px);width:auto;filter:invert(1) brightness(2)}
+.hdr__in a.back{
+  color:var(--cream);text-decoration:none;font-size:15px;padding:11px 20px;
+  border:1px solid rgba(241,236,227,.45);border-radius:var(--r);transition:.25s
+}
+.hdr__in a.back:hover{background:var(--cream);color:var(--ink);border-color:var(--cream)}
+
+main{max-width:900px;margin:0 auto;padding:clamp(44px,6vw,80px) var(--pad) clamp(56px,7vw,96px)}
+h1{font-size:clamp(30px,4.4vw,50px);font-weight:400;letter-spacing:-.025em;line-height:1.08;margin:0 0 18px;text-wrap:balance}
+.upd{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--taupe-deep);margin:0 0 clamp(30px,4vw,48px)}
+.intro{font-size:clamp(18px,1.7vw,21px);line-height:1.5;color:var(--ink-soft);max-width:62ch;margin:0 0 clamp(34px,4vw,54px)}
+
+h2{
+  font-size:clamp(21px,2.2vw,28px);font-weight:400;letter-spacing:-.02em;line-height:1.2;
+  margin:clamp(38px,4.4vw,58px) 0 16px;padding-top:clamp(24px,3vw,36px);border-top:1px solid var(--line-l);
+  display:flex;gap:16px;align-items:baseline
+}
+h2 .n{font-family:var(--mono);font-size:12px;letter-spacing:.12em;color:var(--taupe-deep);flex:0 0 auto}
+p{margin:0 0 14px;max-width:70ch}
+ul{margin:0 0 16px;padding:0;list-style:none;max-width:70ch}
+li{padding:9px 0 9px 26px;position:relative}
+li::before{content:"";position:absolute;left:0;top:19px;width:9px;height:9px;background:var(--glow)}
+.note{
+  background:var(--paper);border:1px solid var(--line-l);border-radius:var(--r);
+  padding:clamp(20px,2.4vw,28px);margin:24px 0;max-width:70ch
+}
+.note p:last-child{margin-bottom:0}
+strong{font-weight:500}
+
+.ftr{background:var(--brown);color:rgba(241,236,227,.72);padding:clamp(38px,5vw,60px) 0;font-size:15px}
+.ftr__in{max-width:900px;margin:0 auto;padding:0 var(--pad);display:flex;flex-wrap:wrap;gap:16px 40px;justify-content:space-between}
+.ftr a{color:rgba(241,236,227,.88);text-decoration:none}
+.ftr a:hover{color:var(--glow)}
+:focus-visible{outline:2px solid var(--glow);outline-offset:3px}
+</style>
+</head>
+<body>
+
+<header class="hdr">
+  <div class="hdr__in">
+    <a href="index.html" aria-label="Ёлушка by Max Christmas"><img src="assets/img/logo-elushka.svg" alt="Ёлушка by Max Christmas"></a>
+    <a class="back" href="index.html">← На главную</a>
+  </div>
+</header>
+
+<main>
+  <h1>Политика конфиденциальности</h1>
+  <p class="upd">Действует с 9 августа 2026 года</p>
+
+  <p class="intro">
+    Здесь написано простыми словами, какие данные о вас появляются, когда вы заходите на сайт Ёлушки,
+    зачем они нужны, кому мы их передаём и как от них отказаться. Документ составлен по требованиям
+    Федерального закона №152-ФЗ «О персональных данных».
+  </p>
+
+  <div class="note">
+    <p><strong>Коротко.</strong> Этот сайт — витрина бренда. На нём нет форм заказа, регистрации и оплаты,
+    поэтому имя, телефон и адрес мы здесь не спрашиваем и не храним. Автоматически собирается только
+    обезличенная статистика посещений. Покупка происходит на сайте Max Christmas или на маркетплейсах —
+    там действуют их собственные правила.</p>
+  </div>
+
+  <h2><span class="n">01</span> Кто обрабатывает данные</h2>
+  <p>
+    Оператором персональных данных выступает ИП Плыс М. П. — производитель искусственных елей
+    Max Christmas, которому принадлежит марка «Ёлушка».
+  </p>
+  <ul>
+    <li>Сайт: раздел бренда «Ёлушка», размещённый оператором</li>
+    <li>Почта для обращений: <a href="mailto:info@maxchristmas-store.ru">info@maxchristmas-store.ru</a></li>
+    <li>Телефон: <a href="tel:88002507183">8 800 250-71-83</a>, будни с 09:00 до 18:00</li>
+  </ul>
+
+  <h2><span class="n">02</span> Какие данные появляются</h2>
+  <p>Когда вы просто смотрите страницу, сохраняются технические сведения, по которым нельзя понять,
+     кто вы: они нужны, чтобы понимать, какие блоки читают, а какие пролистывают.</p>
+  <ul>
+    <li>IP-адрес, присвоенный вам в день визита</li>
+    <li>Тип устройства, браузера и операционной системы, разрешение экрана</li>
+    <li>Дата, время и продолжительность визита, просмотренные разделы</li>
+    <li>Источник перехода — поиск, реклама, соцсеть или прямой заход</li>
+  </ul>
+  <p>
+    Если вы напишете нам на почту или позвоните, мы получим то, что вы сами сообщите: имя, контакт
+    и суть вопроса. Эти сведения используются только для ответа вам.
+  </p>
+
+  <h2><span class="n">03</span> Зачем это нужно</h2>
+  <ul>
+    <li>Понимать, насколько страница понятна и удобна, и улучшать её</li>
+    <li>Оценивать эффективность рекламы и не показывать её тем, кому она не интересна</li>
+    <li>Отвечать на вопросы, которые вы задали по почте или телефону</li>
+    <li>Обеспечивать работоспособность сайта и защищать его от сбоев и атак</li>
+  </ul>
+  <p>Мы не используем эти данные, чтобы составлять ваш портрет как личности, и не обрабатываем
+     сведения о здоровье, вероисповедании, политических взглядах и других особых категориях.</p>
+
+  <h2><span class="n">04</span> Файлы cookie</h2>
+  <p>
+    Cookie — небольшие файлы, которые сайт сохраняет в вашем браузере. Здесь они нужны, чтобы
+    системы аналитики отличали новый визит от повторного и не считали одного человека дважды.
+  </p>
+  <p>
+    Отказаться можно в любой момент: в настройках браузера запретите сохранение cookie или удалите
+    уже сохранённые. Сайт продолжит работать — часть статистики просто перестанет собираться.
+  </p>
+
+  <h2><span class="n">05</span> Кому передаём</h2>
+  <p>Мы не продаём и не передаём данные для чужой рекламы. Обезличенная статистика доступна сервисам,
+     которые её собирают:</p>
+  <ul>
+    <li><strong>Яндекс Метрика</strong> — веб-аналитика (ООО «Яндекс», Москва)</li>
+    <li><strong>Google Analytics</strong> — веб-аналитика, если счётчик подключён (Google LLC)</li>
+  </ul>
+  <p>
+    Эти сервисы получают только технические сведения о визите и не сопоставляют их с вашим именем.
+    Кроме того, данные могут быть переданы государственным органам, если этого требует закон.
+  </p>
+
+  <h2><span class="n">06</span> Переходы на другие сайты</h2>
+  <p>
+    Кнопки «Перейти в каталог», Wildberries, Ozon и «Оптовый прайс» ведут на сторонние площадки.
+    Как только вы перешли, начинают действовать их правила обработки данных — мы на них не влияем
+    и за них не отвечаем. Оформление заказа, оплата и доставка происходят там.
+  </p>
+
+  <h2><span class="n">07</span> Сколько храним и как защищаем</h2>
+  <p>
+    Статистику визитов храним не дольше, чем она нужна для анализа, и не более 26 месяцев —
+    таковы стандартные сроки сервисов аналитики. Переписку по почте — пока продолжается общение
+    и год после него.
+  </p>
+  <p>
+    Доступ к данным есть только у сотрудников, которым он нужен по работе. Мы применяем технические
+    и организационные меры защиты, предусмотренные законом: разграничение доступа, шифрование
+    соединения, резервное копирование.
+  </p>
+
+  <h2><span class="n">08</span> Ваши права</h2>
+  <ul>
+    <li>Узнать, обрабатываем ли мы ваши данные, и получить их копию</li>
+    <li>Потребовать исправить неточные или неполные сведения</li>
+    <li>Отозвать согласие и потребовать удалить данные</li>
+    <li>Возразить против обработки или ограничить её</li>
+    <li>Пожаловаться в Роскомнадзор или обратиться в суд, если считаете, что ваши права нарушены</li>
+  </ul>
+  <p>
+    Чтобы воспользоваться любым из этих прав, напишите на
+    <a href="mailto:info@maxchristmas-store.ru">info@maxchristmas-store.ru</a>.
+    Мы ответим в течение 30 дней — обычно быстрее.
+  </p>
+
+  <h2><span class="n">09</span> Дети</h2>
+  <p>
+    Сайт не предназначен для детей и не собирает их данные намеренно. Если вы считаете, что ребёнок
+    передал нам свои сведения, напишите — мы их удалим.
+  </p>
+
+  <h2><span class="n">10</span> Изменения</h2>
+  <p>
+    Мы можем обновлять этот документ — например, если подключим новый сервис аналитики или добавим
+    форму заявки. Новая редакция начинает действовать с момента публикации на этой странице,
+    дата вверху всегда актуальна. Существенные изменения мы описываем понятным языком, а не прячем
+    в мелких правках.
+  </p>
+</main>
+
+<footer class="ftr">
+  <div class="ftr__in">
+    <span>© 2002–2026, ИП Плыс М. П. Российский производитель искусственных елей.</span>
+    <span><a href="index.html">Вернуться на главную →</a></span>
+  </div>
+</footer>
+
+</body>
+</html>

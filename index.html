@@ -33,9 +33,11 @@
 
 :root{
   /* тёплая ночь — база тёмных секций */
-  --night:#17140f;
-  --night-2:#201b15;
-  --night-3:#2b241c;
+  --brown:#3a2c20;        /* тёмно-коричневый — шапка и подвал */
+  --brown-2:#2f241a;
+  --night:#3a2c20;        /* совместимость со старыми правилами */
+  --night-2:#2f241a;
+  --night-3:#4a3a2c;
   /* фирменный тауп PANTONE 7531 C 85% */
   --taupe:#998876;
   --taupe-deep:#6b5d4f;
@@ -150,7 +152,7 @@ p{margin:0}
   display:flex;align-items:center;justify-content:space-between;gap:22px
 }
 .hdr__logo{transition:opacity .35s var(--ease),transform .35s var(--ease)}
-.hdr__logo img{height:clamp(34px,3.4vw,46px);width:auto;filter:invert(1) brightness(2)}
+.hdr__logo img{height:clamp(42px,4.4vw,62px);width:auto;filter:invert(1) brightness(2)}
 /* на первом экране логотип уже есть в самом hero — в шапке его не дублируем */
 .hdr:not(.is-stuck) .hdr__logo{opacity:0;transform:translateY(-6px);pointer-events:none}
 .hdr__nav{display:flex;gap:26px;font-size:15px}
@@ -160,12 +162,12 @@ p{margin:0}
 }
 .hdr__nav a:hover{color:var(--cream);border-bottom-color:var(--glow)}
 .hdr .btn{padding:11px 22px;font-size:15px;color:var(--cream)}
-.hdr.is-stuck{background:rgba(23,20,15,.86);backdrop-filter:blur(14px) saturate(1.3);border-bottom:1px solid var(--line-d)}
+.hdr.is-stuck{background:rgba(58,44,32,.94);backdrop-filter:blur(14px) saturate(1.2);border-bottom:1px solid rgba(241,236,227,.14)}
 .hdr.is-light .hdr__logo img{filter:none}
 .hdr.is-light .hdr__nav a{color:var(--ink-soft)}
 .hdr.is-light .hdr__nav a:hover{color:var(--ink)}
 .hdr.is-light .btn{color:var(--ink)}
-.hdr.is-light.is-stuck{background:rgba(251,248,243,.9);border-bottom-color:var(--line-l)}
+.hdr.is-light.is-stuck{background:rgba(247,242,234,.95);border-bottom-color:var(--line-l)}
 @media(max-width:900px){.hdr__nav{display:none}}
 
 /* ---- тонкая сетка-подложка ---- */
@@ -204,10 +206,10 @@ p{margin:0}
 .hero__chips i{width:8px;height:8px;background:var(--glow);display:block}
 .hero__in{
   max-width:1440px;margin:0 auto;padding:clamp(96px,9vw,118px) var(--pad) clamp(48px,5vw,74px);
-  display:grid;grid-template-columns:minmax(0,1fr) clamp(300px,38vw,560px);
+  display:grid;grid-template-columns:minmax(0,1fr) clamp(320px,44vw,660px);
   gap:clamp(30px,4vw,56px);align-items:center;min-height:min(94svh,900px);position:relative;z-index:1
 }
-.hero__logo{width:clamp(180px,17vw,250px);filter:invert(1) brightness(2);margin-bottom:clamp(22px,2.6vw,34px)}
+.hero__logo{width:clamp(210px,21vw,320px);filter:invert(1) brightness(2);margin-bottom:clamp(22px,2.6vw,34px)}
 .hero h1{font-size:clamp(42px,5.9vw,90px)}
 .hero h1 .thin{font-weight:200}
 .hero__sub{margin-top:clamp(20px,2vw,30px);max-width:34ch;color:rgba(241,236,227,.76);font-size:clamp(17px,1.4vw,21px);line-height:1.45}
@@ -227,11 +229,6 @@ p{margin:0}
 .hero__media::before{ /* тонкая рамка-свет */
   content:"";position:absolute;inset:-1px;border:1px solid var(--line-d);border-radius:3px;pointer-events:none;z-index:2
 }
-.hero__tag{
-  position:absolute;left:0;bottom:0;right:0;padding:16px 18px;z-index:3;
-  font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;
-  color:var(--cream);background:linear-gradient(transparent,rgba(23,20,15,.8))
-}
 .hero__scroll{
   position:absolute;left:var(--pad);bottom:26px;z-index:2;display:flex;align-items:center;gap:10px;
   font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--taupe-pale)
@@ -244,26 +241,6 @@ p{margin:0}
   .hero__scroll{display:none}
 }
 
-/* ============ 2. ПРОБЛЕМА ============ */
-.prob{background:var(--night-2);color:var(--cream)}
-.prob__grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(32px,5vw,80px);align-items:start}
-.todo{list-style:none;margin:0;padding:0}
-.todo li{
-  display:flex;gap:18px;align-items:flex-start;padding:20px 0;border-bottom:1px solid var(--line-d);
-  font-size:clamp(16px,1.25vw,19px)
-}
-.todo li:first-child{border-top:1px solid var(--line-d)}
-.todo .bx{
-  flex:0 0 20px;height:20px;margin-top:3px;border:1px solid rgba(241,236,227,.4);
-  display:grid;place-items:center;font-size:11px;color:var(--night)
-}
-.todo .done .bx{background:rgba(241,236,227,.55);border-color:transparent}
-.todo .done span{color:rgba(241,236,227,.42);text-decoration:line-through;text-decoration-thickness:1px}
-.todo .last{padding-bottom:0;border-bottom:0}
-.todo .last .bx{border-color:var(--glow);border-style:dashed}
-.todo .last span{color:var(--cream)}
-.todo .last b{font-weight:500}
-@media(max-width:860px){.prob__grid{grid-template-columns:1fr}}
 
 /* ============ 3. ОТКРЫТИЕ БРЕНДА ============ */
 .disc{background:var(--cream)}
@@ -293,7 +270,14 @@ p{margin:0}
 @media(max-width:860px){.disc__top{grid-template-columns:1fr}.disc__media{grid-template-columns:1fr}.facts{grid-template-columns:1fr;gap:22px}}
 
 /* ============ 4. ФИЛОСОФИЯ ============ */
-.phil{background:var(--cream)}
+.phil{background:var(--taupe);color:var(--cream);position:relative;overflow:hidden}
+.phil h2{color:var(--cream)}
+.phil .plist li{border-color:rgba(255,255,255,.26)}
+.phil .plist li:last-child{border-bottom-color:rgba(255,255,255,.26)}
+.phil .plist--keep .mk{color:var(--cream)}
+.phil .rail__label{color:var(--cream)}
+.phil .rail__mark{color:rgba(255,255,255,.75)}
+.phil__film figcaption{color:var(--cream)}
 .phil h2{max-width:13ch}
 .phil__cols{display:grid;grid-template-columns:1fr;gap:clamp(24px,4vw,64px);margin-top:clamp(34px,4vw,56px);max-width:62ch}
 .plist{list-style:none;margin:0;padding:0}
@@ -305,30 +289,36 @@ p{margin:0}
 .plist--keep li strong{font-weight:500}
 .plist--drop li{color:var(--ink-soft)}
 .phil__film{
-  margin-top:clamp(26px,3.4vw,48px);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);
-  gap:clamp(20px,3vw,44px);align-items:start
+  margin-top:clamp(26px,3.4vw,48px);display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);
+  gap:clamp(20px,3vw,44px);align-items:center
 }
 .phil__film video{width:100%;height:auto;display:block;border-radius:var(--r);background:var(--cream)}
 .phil__film figcaption{font-size:clamp(19px,1.9vw,27px);line-height:1.24;letter-spacing:-.015em}
-.phil__film figcaption img{margin-top:clamp(18px,2vw,28px);width:100%;border-radius:var(--r)}
 @media(max-width:860px){.phil__cols{grid-template-columns:1fr}.phil__film{grid-template-columns:1fr}}
 
 /* ============ 5. ЦЕННОСТИ ============ */
-.val{background:var(--night);color:var(--cream);position:relative;overflow:hidden}
+.val{background:var(--cream);color:var(--ink);position:relative;overflow:hidden}
 .val .sec__in{position:relative;z-index:1}
-.val__grid{display:grid;grid-template-columns:repeat(5,1fr);margin-top:clamp(36px,4.4vw,64px);border-top:1px solid var(--line-d)}
-.val__i{padding:clamp(24px,2.2vw,34px) clamp(14px,1.4vw,24px) clamp(30px,3vw,44px);border-right:1px solid var(--line-d);position:relative}
+.val__grid{display:grid;grid-template-columns:repeat(5,1fr);margin-top:clamp(36px,4.4vw,64px);border-top:1px solid var(--line-l)}
+.val__i{padding:clamp(24px,2.2vw,34px) clamp(14px,1.4vw,24px) clamp(30px,3vw,44px);border-right:1px solid var(--line-l);position:relative}
 .val__i:last-child{border-right:0}
 .val__i::after{content:"";position:absolute;left:0;bottom:-1px;height:1px;width:0;background:var(--glow);transition:width .5s var(--ease)}
 .val__i:hover::after{width:100%}
-.val__i .n{font-family:var(--mono);font-size:11px;letter-spacing:.18em;color:var(--taupe-pale)}
+.val__i .n{font-family:var(--mono);font-size:11px;letter-spacing:.18em;color:var(--taupe-deep)}
 .val__i h3{margin:20px 0 10px}
-.val__i p{color:rgba(241,236,227,.62);font-size:15.5px;line-height:1.45}
-@media(max-width:1080px){.val__grid{grid-template-columns:repeat(2,1fr)}.val__i:nth-child(2n){border-right:0}.val__i{border-bottom:1px solid var(--line-d)}}
+.val__i p{color:var(--ink-soft);font-size:15.5px;line-height:1.45}
+@media(max-width:1080px){.val__grid{grid-template-columns:repeat(2,1fr)}.val__i:nth-child(2n){border-right:0}.val__i{border-bottom:1px solid var(--line-l)}}
 @media(max-width:560px){.val__grid{grid-template-columns:1fr}.val__i{border-right:0}}
 
 /* ============ 6. МОДЕЛИ + ШКАЛА ВЫСОТ ============ */
-.mod{background:var(--cream);position:relative;overflow:hidden}
+.mod{background:var(--taupe);color:var(--cream);position:relative;overflow:hidden}
+.mod h2{color:var(--cream)}
+.mod .lead{color:rgba(255,255,255,.85)}
+.mod .rail__label,.mod .rail__mark{color:rgba(255,255,255,.8)}
+.mod__note{color:rgba(255,255,255,.8)}
+.mod__foot{border-top-color:rgba(255,255,255,.22)}
+.mod .btn{border-color:rgba(255,255,255,.5)!important;color:var(--cream)}
+.mod .grid-bg--dark{opacity:.35}
 .mod .sec__in{position:relative;z-index:1}
 .mod__head{display:block}
 .mod__head h2{max-width:20ch}
@@ -432,7 +422,12 @@ p{margin:0}
 }
 
 /* ============ 8. ОТЗЫВЫ ============ */
-.rev{background:var(--cream)}
+.rev{background:var(--taupe);color:var(--cream)}
+.rev h2{color:var(--cream)}
+.rev .rail__label,.rev .rail__mark{color:rgba(255,255,255,.8)}
+.rev__meta{border-top-color:rgba(255,255,255,.24)}
+.rev__meta span{color:rgba(255,255,255,.75)}
+.rev__hint{color:rgba(255,255,255,.7)}
 .rev h2{max-width:19ch}
 .rev__meta{display:flex;flex-wrap:wrap;gap:clamp(20px,3.4vw,52px);margin-top:clamp(26px,3vw,42px);padding-top:22px;border-top:1px solid var(--line-l)}
 .rev__meta b{display:block;font-weight:400;font-size:clamp(22px,2vw,30px);line-height:1;font-variant-numeric:tabular-nums}
@@ -448,7 +443,13 @@ p{margin:0}
 .rev__hint{margin-top:14px;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--taupe-deep)}
 
 /* ============ 9. ГДЕ КУПИТЬ ============ */
-.buy{background:var(--taupe);color:var(--cream);position:relative;overflow:hidden}
+.buy{background:var(--cream);color:var(--ink);position:relative;overflow:hidden}
+.buy h2{color:var(--ink)}
+.buy__lead{color:var(--ink-soft)!important}
+.buy .rail__label,.buy .rail__mark{color:var(--taupe-deep)}
+.buy .grid-bg{opacity:.9;background-image:
+  linear-gradient(to right,rgba(23,20,15,.05) 1px,transparent 1px),
+  linear-gradient(to bottom,rgba(23,20,15,.05) 1px,transparent 1px)}
 .buy .sec__in{position:relative;z-index:1}
 .buy h2{max-width:17ch}
 .buy__lead{margin-top:20px;max-width:54ch;color:rgba(255,255,255,.86);font-size:clamp(17px,1.35vw,20px)}
@@ -456,7 +457,7 @@ p{margin:0}
 /* плашки-маршруты: светлая карточка с крупным номером и нижней строкой-действием */
 .route{
   display:flex;flex-direction:column;gap:14px;padding:clamp(26px,2.4vw,34px);
-  background:var(--paper);color:var(--ink);border-radius:var(--r);border:1px solid rgba(23,20,15,.08);
+  background:#fffdfa;color:var(--ink);border-radius:var(--r);border:1px solid rgba(23,20,15,.14);
   text-decoration:none;position:relative;overflow:hidden;
   transition:transform .45s var(--ease),box-shadow .45s var(--ease)
 }
@@ -473,7 +474,7 @@ p{margin:0}
 .pill{border:1px solid var(--line-l);border-radius:var(--r-sm);padding:9px 15px;font-size:14px;text-decoration:none;transition:.25s}
 .pill:hover{border-color:var(--ink);background:var(--ink);color:var(--paper)}
 .route__go{
-  margin-top:auto;padding:14px 16px;border-radius:var(--r-sm);background:var(--cream);
+  margin-top:auto;padding:14px 16px;border-radius:var(--r-sm);background:var(--cream);border:1px solid var(--line-l);
   display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:15.5px;
   transition:background .35s var(--ease),color .35s var(--ease)
 }
@@ -483,7 +484,7 @@ p{margin:0}
 @media(max-width:900px){.buy__grid{grid-template-columns:1fr}}
 
 /* ============ ПОДВАЛ ============ */
-.ftr{background:var(--night);color:rgba(241,236,227,.7);padding:clamp(56px,6vw,92px) 0 36px;font-size:15px}
+.ftr{background:var(--brown);color:rgba(241,236,227,.72);padding:clamp(56px,6vw,92px) 0 36px;font-size:15px}
 .ftr__in{max-width:1440px;margin:0 auto;padding:0 var(--pad)}
 .ftr__top{display:grid;grid-template-columns:1.15fr 1fr 1fr;gap:clamp(26px,4vw,56px);padding-bottom:clamp(30px,3.6vw,48px);border-bottom:1px solid var(--line-d)}
 .ftr__logo{width:clamp(200px,22vw,300px);height:auto;filter:invert(1) brightness(2)}
@@ -494,6 +495,29 @@ p{margin:0}
 .ftr__tel{display:inline-block;margin-bottom:9px;font-size:clamp(20px,1.9vw,26px);color:var(--cream);text-decoration:none;font-variant-numeric:tabular-nums}
 .ftr__bot{display:flex;flex-wrap:wrap;gap:14px 32px;justify-content:space-between;padding-top:26px;font-size:13px;color:rgba(241,236,227,.45)}
 @media(max-width:860px){.ftr__top{grid-template-columns:1fr}}
+
+/* ---------- просмотр отзыва на весь экран ---------- */
+.lb{
+  position:fixed;inset:0;z-index:200;display:none;place-items:center;
+  background:rgba(47,36,26,.94);backdrop-filter:blur(6px);padding:clamp(12px,3vw,40px)
+}
+.lb[open],.lb.is-on{display:grid}
+.lb img{max-width:100%;max-height:calc(100svh - clamp(24px,6vw,80px));width:auto;height:auto;border-radius:var(--r-sm);box-shadow:0 30px 80px rgba(0,0,0,.5)}
+.lb__close,.lb__nav{
+  position:absolute;background:rgba(241,236,227,.14);border:1px solid rgba(241,236,227,.3);
+  color:var(--cream);border-radius:var(--r-sm);cursor:pointer;font-family:inherit;
+  display:grid;place-items:center;transition:background .25s
+}
+.lb__close:hover,.lb__nav:hover{background:rgba(241,236,227,.28)}
+.lb__close{top:clamp(12px,2vw,26px);right:clamp(12px,2vw,26px);width:46px;height:46px;font-size:22px;line-height:1}
+.lb__nav{top:50%;transform:translateY(-50%);width:46px;height:64px;font-size:20px}
+.lb__nav--prev{left:clamp(8px,1.6vw,24px)}
+.lb__nav--next{right:clamp(8px,1.6vw,24px)}
+.lb__count{
+  position:absolute;bottom:clamp(12px,2vw,26px);left:50%;transform:translateX(-50%);
+  font-family:var(--mono);font-size:12px;letter-spacing:.14em;color:rgba(241,236,227,.75)
+}
+.shot-r{cursor:zoom-in}
 
 /* ---------- появление ---------- */
 .rv{opacity:0;transform:translateY(22px);transition:opacity .85s var(--ease),transform .85s var(--ease)}
@@ -535,7 +559,6 @@ p{margin:0}
       <p class="hero__sub">Выглядит как живая, а стоит как разумная покупка. Служит годами.</p>
       <div class="hero__chips">
         <span><i></i>100% литые ветки</span>
-        <span><i></i>Металлическая подставка</span>
         <span><i></i>Сделано в России</span>
       </div>
       <div class="hero__cta">
@@ -552,37 +575,9 @@ p{margin:0}
     <figure class="hero__media rv">
       <video src="assets/video/hero.mp4" poster="assets/video/hero-poster.jpg"
              muted loop playsinline autoplay preload="metadata"></video>
-      <figcaption class="hero__tag">Ёлушка вживую · без обработки</figcaption>
     </figure>
   </div>
   <div class="hero__scroll"><i></i> листайте</div>
-</section>
-
-<!-- ============ 2. ПРОБЛЕМА ============ -->
-<section class="sec prob" id="problem">
-  <div class="sec__in">
-    <div class="rail"><div class="rail__stick">
-      <span class="rail__mark" aria-hidden="true">ё</span>
-      <span class="rail__label">Знакомо?</span>
-    </div></div>
-    <div class="prob__grid">
-      <div class="rv">
-        <h2>Ожидание чуда превратилось в список дел</h2>
-        <p class="dim lead" style="margin-top:26px;max-width:40ch">
-          Декабрь начинается — и праздник становится проектом со сроками.
-          Всё вычёркивается по порядку. А ёлка каждый год остаётся последним пунктом.
-        </p>
-      </div>
-      <ul class="todo rv" data-d="1">
-        <li class="done"><i class="bx">✓</i><span>Купить всем подарки</span></li>
-        <li class="done"><i class="bx">✓</i><span>Украсить дом</span></li>
-        <li class="done"><i class="bx">✓</i><span>Купить еду на стол</span></li>
-        <li class="done"><i class="bx">✓</i><span>Найти наряды всей семье</span></li>
-        <li class="last"><i class="bx"></i><span><b>Ёлка.</b> Достать старую — понять, что она совсем не годится —
-          и в последний момент искать живую из того, что осталось…</span></li>
-      </ul>
-    </div>
-  </div>
 </section>
 
 <!-- ============ 3. ОТКРЫТИЕ БРЕНДА ============ -->
@@ -594,17 +589,18 @@ p{margin:0}
     </div></div>
     <div>
       <div class="disc__top">
-        <h2 class="rv">Красоту ёлки создаёт <span class="lit">форма и характер</span></h2>
+        <h2 class="rv">Собственное производство <span class="lit">полного цикла</span></h2>
         <p class="lead dim rv" data-d="1">
-          Ёлка выглядит настоящей, когда у неё правильный силуэт и хвоя, которую хочется потрогать.
-          Мы создаём ёлки больше двадцати четырёх лет и знаем, как сделать лучший дизайн новогодней ёлки.
+          Мы разрабатываем модели и создаём Ёлушку на фабрике Max Christmas.
+          Ёлка выглядит настоящей, когда у неё правильный силуэт и хвоя, которую хочется потрогать, —
+          за двадцать четыре года мы научились делать именно так.
         </p>
       </div>
 
       <div class="disc__media">
         <figure class="shot rv">
-          <img src="assets/img/about-1.jpg" alt="Девочка украшает настольную заснеженную ёлочку Ёлушка" loading="lazy">
-          <figcaption>Настольная заснеженная ёлочка</figcaption>
+          <img src="assets/img/about-1.jpg" alt="Ель Ёлушка в интерьере гостиной" loading="lazy">
+          <figcaption>Ель в интерьере: наряженная, с гирляндой</figcaption>
         </figure>
         <figure class="shot rv" data-d="1">
           <img src="assets/img/about-2.jpg" alt="Литая хвоя Ёлушки крупным планом" loading="lazy">
@@ -612,18 +608,18 @@ p{margin:0}
         </figure>
         <figure class="shot rv" data-d="2">
           <img src="assets/img/about-3.jpg" alt="Настольная ёлка Ёлушка на кухне" loading="lazy">
-          <figcaption>60 см — на стол, полку, подоконник</figcaption>
+          <figcaption>Настольная, 60 см — на стол или подоконник</figcaption>
         </figure>
         <figure class="shot rv" data-d="3">
-          <img src="assets/img/about-4.jpg" alt="Ребёнок у ёлки Ёлушка в комнате" loading="lazy">
-          <figcaption>Ёлка, вокруг которой собираются</figcaption>
+          <img src="assets/img/about-4.jpg" alt="Ель Ёлушка у кресла в светлой комнате" loading="lazy">
+          <figcaption>Пышная форма для просторной комнаты</figcaption>
         </figure>
       </div>
 
       <div class="facts rv">
         <div><b><span class="fnum" data-count="24">24</span> года</b><span>Разрабатываем и создаём искусственные ёлки</span></div>
         <div><b>Литая хвоя</b><span>Или плёнка класса А — в зависимости от модели</span></div>
-        <div><b>Годами</b><span>Покупка на годы, а не на один декабрь</span></div>
+        <div><b>Срок службы<br>10 лет</b><span>Покупка не на один декабрь</span></div>
       </div>
     </div>
   </div>
@@ -652,7 +648,6 @@ p{margin:0}
                muted loop playsinline preload="none"></video>
         <figcaption>
           Достать коробку и собрать — вся «сложность» заканчивается вместе с распаковкой
-          <img src="assets/img/mp-box.jpg" alt="Коробка Ёлушки с надписью «просто и с душой»" loading="lazy">
         </figcaption>
       </figure>
     </div>
@@ -660,7 +655,7 @@ p{margin:0}
 </section>
 
 <!-- ============ 5. ЦЕННОСТИ ============ -->
-<section class="sec val on-dark" id="values">
+<section class="sec val" id="values">
   <span class="wm" aria-hidden="true">ёлушка</span>
   <div class="sec__in">
     <div class="rail"><div class="rail__stick">
@@ -781,13 +776,12 @@ p{margin:0}
       <h2 class="rv">«Раньше каждый год покупали живую. Теперь достаём свою — и праздник начинается»</h2>
 
       <div class="rev__meta rv" data-d="1">
-        <div><b>21</b><span>Фото из отзывов</span></div>
+        <div><b>Живые фото покупателей</b><span>Ёлушка в реальных квартирах</span></div>
         <div><b>Wildberries</b><span>Покупатели с подтверждённой покупкой</span></div>
-        <div><b>Без правок</b><span>Скриншоты как есть</span></div>
       </div>
 
       <div class="rail-x rv" data-drag id="rev-rail"></div>
-      <p class="rev__hint">Тяните вбок ←→</p>
+      <p class="rev__hint">Тяните вбок ←→ · нажмите на фото, чтобы открыть на весь экран</p>
     </div>
   </div>
 </section>
@@ -823,7 +817,6 @@ p{margin:0}
             <a class="pill" href="https://www.wildberries.ru/seller/250149369" target="_blank" rel="noopener">Wildberries →</a>
             <a class="pill" href="https://www.ozon.ru/seller/max-christmas-4885759/" target="_blank" rel="noopener">Ozon →</a>
           </div>
-          <span class="route__go">Открыть магазин на площадке</span>
         </div>
 
         <a class="route rv" data-d="2" href="https://maxchristmas-store.ru/about/opt/" target="_blank" rel="noopener">
@@ -867,7 +860,7 @@ p{margin:0}
     <div class="ftr__bot">
       <span>© 2002–2026, ИП Плыс М.П. Российский производитель искусственных елей.</span>
       <span>
-        <a href="https://maxchristmas-store.ru/about/conf/" target="_blank" rel="noopener">Политика конфиденциальности</a>
+        <a href="privacy.html">Политика конфиденциальности</a>
         &nbsp;·&nbsp;
         <a href="https://maxchristmas-store.ru/about/opt/" target="_blank" rel="noopener">Оптовикам</a>
       </span>
@@ -875,7 +868,17 @@ p{margin:0}
   </div>
 </footer>
 
+<!-- Просмотр отзыва на весь экран -->
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Фото из отзыва">
+  <button class="lb__close" id="lb-close" aria-label="Закрыть">&#10005;</button>
+  <button class="lb__nav lb__nav--prev" id="lb-prev" aria-label="Предыдущее фото">&#8249;</button>
+  <img id="lb-img" src="" alt="Фото ёлки Ёлушка из отзыва покупателя">
+  <button class="lb__nav lb__nav--next" id="lb-next" aria-label="Следующее фото">&#8250;</button>
+  <span class="lb__count" id="lb-count"></span>
+</div>
+
 <script>
+
 /* Каталог вшит в страницу скриптом tools/update_feed.py — работает без загрузок */
 /* MODELS-DATA:BEGIN */
 window.ELUSHKA = {"updated": "09.08.2026", "source": "/Users/mariapogorelova/Downloads/FID_ELUSHKA-2.xml", "min_price": 2208, "models_total": 20, "showcase": [{"family": "Уральская", "picture": "https://maxchristmas-store.ru/upload/iblock/8ab/tpc5owg2abdk4pztyftk5ny3jm7204qo.jpg", "url": "https://maxchristmas-store.ru/iskusstevennye_eli/aktsionnye_litye_elki/el_iskusstvennaya_uralskaya/", "heights": [{"h": "1.2 м", "m": 1.2, "d": "80 cм", "price": 5568, "oldprice": 6960, "url": "https://maxchristmas-store.ru/iskusstevennye_eli/aktsionnye_litye_elki/el_iskusstvennaya_uralskaya/?offer=2190"}, {"h": "1.5 м", "m": 1.5, "d": "90 cм", "price": 7984, "oldprice": 9980, "url": "https://maxchristmas-store.ru/iskusstevennye_eli/aktsionnye_litye_elki/el_iskusstvennaya_uralskaya/?offer=2191"}, {"h": "1.8 м", "m": 1.8, "d": "110 см", "price": 10968, "oldprice": 13710, "url": "https://maxchristmas-store.ru/iskusstevennye_eli/aktsionnye_litye_elki/el_iskusstvennaya_uralskaya/?offer=2192"}, {"h": "2.1 м", "m": 2.1, "d": "125 см", "price": 17184, "oldprice": 21480, "url": "https://maxchristmas-store.ru/iskusstevennye_eli/aktsionnye_litye_elki/el_iskusstvennaya_uralskaya/?offer=2193"}, {"h": "2.4 м", "m": 2.4, "d": "148 см", "price": 24768, "oldprice": 30960, "url": "https://maxchristmas-store.ru/iskusstevennye_eli/aktsionnye_litye_elki/el_iskusstvennaya_uralskaya/?offer=2350"}], "price_from": 5568, "m_min": 1.2, "m_max": 2.4, "title": "Уральская", "subtitle": "Классический русский силуэт", "kind": "green"}, {"family": "Донская", "picture": "https://maxchristmas-store.ru/upload/iblock/773/m6ghymjje2n5yh2d6kr5bnf6hxio0y25.jpg", "url": "https://maxchristmas-store.ru/iskusstevennye_eli/aktsionnye_litye_elki/elka_litaya_donskaya/", "heights": [{"h": "1.2 м", "m": 1.2, "d": "85 cм", "price": 5552, "oldprice": 6940, "url": "https://maxchristmas-store.ru/iskusstevennye_eli/aktsionnye_litye_elki/elka_litaya_donskaya/?offer=3064"}, {"h": "1.5 м", "m": 1.5, "d": "90 cм", "price": 7960, "oldprice": 9950, "url": "https://maxchristmas-store.ru/iskusstevennye_eli/aktsionnye_litye_elki/elka_litaya_donskaya/?offer=3065"}, {"h": "1.8 м", "m": 1.8, "d": "110 см", "price": 11736, "oldprice": 14670, "url": "https://maxchristmas-store.ru/iskusstevennye_eli/aktsionnye_litye_elki/elka_litaya_donskaya/?offer=3066"}, {"h": "2.1 м", "m": 2.1, "d": "120 см", "price": 17320, "oldprice": 21650, "url": "https://maxchristmas-store.ru/iskusstevennye_eli/aktsionnye_litye_elki/elka_litaya_donskaya/?offer=3067"}], "price_from": 5552, "m_min": 1.2, "m_max": 2.1, "title": "Донская", "subtitle": "Пышная, с широким низом", "kind": "green"}, {"family": "Королевская", "picture": "https://maxchristmas-store.ru/upload/iblock/e2f/athn46nttlaccah0pulb0b7b2ucppqya.jpg", "url": "https://maxchristmas-store.ru/iskusstevennye_eli/aktsionnye_litye_elki/elka_litaya_korolevskaya/", "heights": [{"h": "1.2 м", "m": 1.2, "d": "85 cм", "price": 5576, "oldprice": 6969, "url": "https://maxchristmas-store.ru/iskusstevennye_eli/aktsionnye_litye_elki/elka_litaya_korolevskaya/?offer=4605"}, {"h": "1.5 м", "m": 1.5, "d": "95 cм", "price": 7273, "oldprice": 9091, "url": "https://maxchristmas-store.ru/iskusstevennye_eli/aktsionnye_litye_elki/elka_litaya_korolevskaya/?offer=4606"}, {"h": "1.8 м", "m": 1.8, "d": "115 см", "price": 11074, "oldprice": 13842, "url": "https://maxchristmas-store.ru/iskusstevennye_eli/aktsionnye_litye_elki/elka_litaya_korolevskaya/?offer=4607"}, {"h": "2.1 м", "m": 2.1, "d": "135 см", "price": 14312, "oldprice": 17890, "url": "https://maxchristmas-store.ru/iskusstevennye_eli/aktsionnye_litye_elki/elka_litaya_korolevskaya/?offer=4608"}], "price_from": 5576, "m_min": 1.2, "m_max": 2.1, "title": "Королевская", "subtitle": "Крупная хвоя, плотный ярус", "kind": "green"}, {"family": "Алёнушка", "picture": "https://maxchristmas-store.ru/upload/iblock/b57/r21w6vzyesizri30vtpb32br0utzlpsh.jpg", "url": "https://maxchristmas-store.ru/iskusstevennye_eli/aktsionnye_litye_elki/elka_litaya_alyenushka/", "heights": [{"h": "1.5 м", "m": 1.5, "d": "81 см", "price": 6592, "oldprice": 8240, "url": "https://maxchristmas-store.ru/iskusstevennye_eli/aktsionnye_litye_elki/elka_litaya_alyenushka/?offer=3069"}, {"h": "1.8 м", "m": 1.8, "d": "95 cм", "price": 9056, "oldprice": 11320, "url": "https://maxchristmas-store.ru/iskusstevennye_eli/aktsionnye_litye_elki/elka_litaya_alyenushka/?offer=3070"}, {"h": "2.1 м", "m": 2.1, "d": "116 см", "price": 14176, "oldprice": 17720, "url": "https://maxchristmas-store.ru/iskusstevennye_eli/aktsionnye_litye_elki/elka_litaya_alyenushka/?offer=3071"}], "price_from": 6592, "m_min": 1.5, "m_max": 2.1, "title": "Алёнушка", "subtitle": "Стройная, для небольших комнат", "kind": "green"}, {"family": "Заснеженная литая елка Уральская", "picture": "https://maxchristmas-store.ru/upload/iblock/c41/chp0s6vtqjsy3akwa12jhp2qltmdr4b9.jpg", "url": "https://maxchristmas-store.ru/iskusstevennye_eli/aktsionnye_litye_elki/zasnezhennaya_litaya_elka_uralskaya/", "heights": [{"h": "1.2 м", "m": 1.2, "d": "80 cм", "price": 7984, "oldprice": 9980, "url": "https://maxchristmas-store.ru/iskusstevennye_eli/aktsionnye_litye_elki/zasnezhennaya_litaya_elka_uralskaya/?offer=2274"}, {"h": "1.5 м", "m": 1.5, "d": "90 cм", "price": 10824, "oldprice": 13530, "url": "https://maxchristmas-store.ru/iskusstevennye_eli/aktsionnye_litye_elki/zasnezhennaya_litaya_elka_uralskaya/?offer=2275"}, {"h": "1.8 м", "m": 1.8, "d": "110 см", "price": 16256, "oldprice": 20320, "url": "https://maxchristmas-store.ru/iskusstevennye_eli/aktsionnye_litye_elki/zasnezhennaya_litaya_elka_uralskaya/?offer=2276"}, {"h": "2.1 м", "m": 2.1, "d": "125 см", "price": 22744, "oldprice": 28430, "url": "https://maxchristmas-store.ru/iskusstevennye_eli/aktsionnye_litye_elki/zasnezhennaya_litaya_elka_uralskaya/?offer=2277"}, {"h": "2.4 м", "m": 2.4, "d": "148 см", "price": 32592, "oldprice": 40740, "url": "https://maxchristmas-store.ru/iskusstevennye_eli/aktsionnye_litye_elki/zasnezhennaya_litaya_elka_uralskaya/?offer=3111"}], "price_from": 7984, "m_min": 1.2, "m_max": 2.4, "title": "Уральская заснеженная", "subtitle": "Как после первого снега", "kind": "snow"}, {"family": "Заснеженная литая елка Донская", "picture": "https://maxchristmas-store.ru/upload/iblock/97b/jpw1br5kkdq1chvzdcnwww8auxxvcto0.jpg", "url": "https://maxchristmas-store.ru/iskusstevennye_eli/aktsionnye_litye_elki/zasnezhennaya_litaya_elka_donskaya/", "heights": [{"h": "1.2 м", "m": 1.2, "d": "85 cм", "price": 8432, "oldprice": 10540, "url": "https://maxchristmas-store.ru/iskusstevennye_eli/aktsionnye_litye_elki/zasnezhennaya_litaya_elka_donskaya/?offer=2279"}, {"h": "1.5 м", "m": 1.5, "d": "90 cм", "price": 11464, "oldprice": 14330, "url": "https://maxchristmas-store.ru/iskusstevennye_eli/aktsionnye_litye_elki/zasnezhennaya_litaya_elka_donskaya/?offer=2280"}, {"h": "1.8 м", "m": 1.8, "d": "110 см", "price": 17584, "oldprice": 21980, "url": "https://maxchristmas-store.ru/iskusstevennye_eli/aktsionnye_litye_elki/zasnezhennaya_litaya_elka_donskaya/?offer=2281"}, {"h": "2.1 м", "m": 2.1, "d": "120 см", "price": 24776, "oldprice": 30970, "url": "https://maxchristmas-store.ru/iskusstevennye_eli/aktsionnye_litye_elki/zasnezhennaya_litaya_elka_donskaya/?offer=2282"}], "price_from": 8432, "m_min": 1.2, "m_max": 2.1, "title": "Донская заснеженная", "subtitle": "Заснеженная хвоя, широкий низ", "kind": "snow"}, {"family": "Королевская заснеженная", "picture": "https://maxchristmas-store.ru/upload/iblock/aaf/13xhafps8m4v2lgb3xyiq7hvowc3wo2j.jpg", "url": "https://maxchristmas-store.ru/iskusstevennye_eli/aktsionnye_litye_elki/elka_litaya_korolevskaya_zasnezhennaya/", "heights": [{"h": "1.2 м", "m": 1.2, "d": "85 cм", "price": 7986, "oldprice": 9982, "url": "https://maxchristmas-store.ru/iskusstevennye_eli/aktsionnye_litye_elki/elka_litaya_korolevskaya_zasnezhennaya/?offer=4609"}, {"h": "1.5 м", "m": 1.5, "d": "95 cм", "price": 10291, "oldprice": 12863, "url": "https://maxchristmas-store.ru/iskusstevennye_eli/aktsionnye_litye_elki/elka_litaya_korolevskaya_zasnezhennaya/?offer=4610"}, {"h": "1.8 м", "m": 1.8, "d": "115 см", "price": 14545, "oldprice": 18181, "url": "https://maxchristmas-store.ru/iskusstevennye_eli/aktsionnye_litye_elki/elka_litaya_korolevskaya_zasnezhennaya/?offer=4611"}, {"h": "2.1 м", "m": 2.1, "d": "135 см", "price": 20137, "oldprice": 25171, "url": "https://maxchristmas-store.ru/iskusstevennye_eli/aktsionnye_litye_elki/elka_litaya_korolevskaya_zasnezhennaya/?offer=4612"}], "price_from": 7986, "m_min": 1.2, "m_max": 2.1, "title": "Королевская заснеженная", "subtitle": "Заснеженная, крупная хвоя", "kind": "snow"}, {"family": "Елка искусственная Сказочная заснеженная", "picture": "https://maxchristmas-store.ru/upload/iblock/f91/w0axp9ngpntrbn96pcaats83cxwqcl3z.jpg", "url": "https://maxchristmas-store.ru/iskusstevennye_eli/aktsionnye_litye_elki/elka_iskusstvennaya_skazochnaya_zasnezhennaya_yelushka/", "heights": [{"h": "1.5 м", "m": 1.5, "d": "95 cм", "price": 9487, "oldprice": 11858, "url": "https://maxchristmas-store.ru/iskusstevennye_eli/aktsionnye_litye_elki/elka_iskusstvennaya_skazochnaya_zasnezhennaya_yelushka/?offer=4601"}, {"h": "1.8 м", "m": 1.8, "d": "115 см", "price": 13384, "oldprice": 16730, "url": "https://maxchristmas-store.ru/iskusstevennye_eli/aktsionnye_litye_elki/elka_iskusstvennaya_skazochnaya_zasnezhennaya_yelushka/?offer=4602"}, {"h": "2.1 м", "m": 2.1, "d": "135 см", "price": 18301, "oldprice": 22876, "url": "https://maxchristmas-store.ru/iskusstevennye_eli/aktsionnye_litye_elki/elka_iskusstvennaya_skazochnaya_zasnezhennaya_yelushka/?offer=4603"}], "price_from": 9487, "m_min": 1.5, "m_max": 2.1, "title": "Сказочная заснеженная", "subtitle": "Пышная, праздничная", "kind": "snow"}, {"family": "Люблинская", "picture": "https://maxchristmas-store.ru/upload/iblock/18a/b81bz7x4njp2r3jg6umm90y2z6lnvc7s.jpg", "url": "https://maxchristmas-store.ru/iskusstevennye_eli/aktsionnye_litye_elki/elka_litaya_lyublinskaya/", "heights": [{"h": "1.1 м", "m": 1.1, "d": "75 cм", "price": 4616, "oldprice": 5770, "url": "https://maxchristmas-store.ru/iskusstevennye_eli/aktsionnye_litye_elki/elka_litaya_lyublinskaya/?offer=2284"}, {"h": "1.4 м", "m": 1.4, "d": "85 cм", "price": 6528, "oldprice": 8160, "url": "https://maxchristmas-store.ru/iskusstevennye_eli/aktsionnye_litye_elki/elka_litaya_lyublinskaya/?offer=2285"}, {"h": "1.7 м", "m": 1.7, "d": "105 см", "price": 10376, "oldprice": 12970, "url": "https://maxchristmas-store.ru/iskusstevennye_eli/aktsionnye_litye_elki/elka_litaya_lyublinskaya/?offer=2286"}, {"h": "2 м", "m": 2.0, "d": "115 см", "price": 14744, "oldprice": 18430, "url": "https://maxchristmas-store.ru/iskusstevennye_eli/aktsionnye_litye_elki/elka_litaya_lyublinskaya/?offer=2287"}], "price_from": 4616, "m_min": 1.1, "m_max": 2.0, "title": "Люблинская", "subtitle": "Лёгкая и самая доступная", "kind": "green"}, {"family": "Ивановская", "picture": "https://maxchristmas-store.ru/upload/iblock/e47/h7aspw5re7dcb6jj0lhz0z087z90ztoa.jpg", "url": "https://maxchristmas-store.ru/iskusstevennye_eli/aktsionnye_litye_elki/elka_litaya_ivanovskaya/", "heights": [{"h": "1.1 м", "m": 1.1, "d": "75 cм", "price": 5112, "oldprice": 6390, "url": "https://maxchristmas-store.ru/iskusstevennye_eli/aktsionnye_litye_elki/elka_litaya_ivanovskaya/?offer=2289"}, {"h": "1.4 м", "m": 1.4, "d": "95 cм", "price": 7320, "oldprice": 9150, "url": "https://maxchristmas-store.ru/iskusstevennye_eli/aktsionnye_litye_elki/elka_litaya_ivanovskaya/?offer=2290"}, {"h": "1.7 м", "m": 1.7, "d": "105 см", "price": 10856, "oldprice": 13570, "url": "https://maxchristmas-store.ru/iskusstevennye_eli/aktsionnye_litye_elki/elka_litaya_ivanovskaya/?offer=2291"}, {"h": "2 м", "m": 2.0, "d": "115 см", "price": 14648, "oldprice": 18310, "url": "https://maxchristmas-store.ru/iskusstevennye_eli/aktsionnye_litye_elki/elka_litaya_ivanovskaya/?offer=2292"}], "price_from": 5112, "m_min": 1.1, "m_max": 2.0, "title": "Ивановская", "subtitle": "Мягкий силуэт", "kind": "green"}, {"family": "Марьинская", "picture": "https://maxchristmas-store.ru/upload/iblock/89c/wvrxkgfmjdz3ysxqjc8z7v61ghi480jg.jpg", "url": "https://maxchristmas-store.ru/iskusstevennye_eli/aktsionnye_litye_elki/elka_litaya_marinskaya/", "heights": [{"h": "1.1 м", "m": 1.1, "d": "75 cм", "price": 5192, "oldprice": 6490, "url": "https://maxchristmas-store.ru/iskusstevennye_eli/aktsionnye_litye_elki/elka_litaya_marinskaya/?offer=2294"}, {"h": "1.4 м", "m": 1.4, "d": "85 cм", "price": 8176, "oldprice": 10220, "url": "https://maxchristmas-store.ru/iskusstevennye_eli/aktsionnye_litye_elki/elka_litaya_marinskaya/?offer=2295"}, {"h": "1.7 м", "m": 1.7, "d": "105 см", "price": 12680, "oldprice": 15850, "url": "https://maxchristmas-store.ru/iskusstevennye_eli/aktsionnye_litye_elki/elka_litaya_marinskaya/?offer=2296"}, {"h": "2 м", "m": 2.0, "d": "120 см", "price": 18384, "oldprice": 22980, "url": "https://maxchristmas-store.ru/iskusstevennye_eli/aktsionnye_litye_elki/elka_litaya_marinskaya/?offer=2297"}], "price_from": 5192, "m_min": 1.1, "m_max": 2.0, "title": "Марьинская", "subtitle": "Густая крона", "kind": "green"}, {"family": "Подольская", "picture": "https://maxchristmas-store.ru/upload/iblock/f84/hekxkkn817xgujurk6msaeulsqc3fsti.jpg", "url": "https://maxchristmas-store.ru/iskusstevennye_eli/aktsionnye_litye_elki/elka_litaya_podolskaya/", "heights": [{"h": "1.1 м", "m": 1.1, "d": "75 cм", "price": 5224, "oldprice": 6530, "url": "https://maxchristmas-store.ru/iskusstevennye_eli/aktsionnye_litye_elki/elka_litaya_podolskaya/?offer=3059"}, {"h": "1.4 м", "m": 1.4, "d": "90 cм", "price": 7472, "oldprice": 9340, "url": "https://maxchristmas-store.ru/iskusstevennye_eli/aktsionnye_litye_elki/elka_litaya_podolskaya/?offer=3060"}, {"h": "1.7 м", "m": 1.7, "d": "105 см", "price": 11688, "oldprice": 14610, "url": "https://maxchristmas-store.ru/iskusstevennye_eli/aktsionnye_litye_elki/elka_litaya_podolskaya/?offer=3061"}, {"h": "2 м", "m": 2.0, "d": "118 см", "price": 15152, "oldprice": 18940, "url": "https://maxchristmas-store.ru/iskusstevennye_eli/aktsionnye_litye_elki/elka_litaya_podolskaya/?offer=3062"}], "price_from": 5224, "m_min": 1.1, "m_max": 2.0, "title": "Подольская", "subtitle": "Ровный конус", "kind": "green"}, {"family": "Лозанна", "picture": "https://maxchristmas-store.ru/upload/iblock/35a/icc7usany8tjsp43p3oq6ymhlbse36aj.jpg", "url": "https://maxchristmas-store.ru/iskusstevennye_eli/aktsionnye_litye_elki/elka_litaya_lozanna/", "heights": [{"h": "1.2 м", "m": 1.2, "d": "80 cм", "price": 9032, "oldprice": 11290, "url": "https://maxchristmas-store.ru/iskusstevennye_eli/aktsionnye_litye_elki/elka_litaya_lozanna/?offer=4097"}, {"h": "1.5 м", "m": 1.5, "d": "90 cм", "price": 12016, "oldprice": 15020, "url": "https://maxchristmas-store.ru/iskusstevennye_eli/aktsionnye_litye_elki/elka_litaya_lozanna/?offer=4098"}, {"h": "1.8 м", "m": 1.8, "d": "110 см", "price": 17360, "oldprice": 21700, "url": "https://maxchristmas-store.ru/iskusstevennye_eli/aktsionnye_litye_elki/elka_litaya_lozanna/?offer=4099"}, {"h": "2.1 м", "m": 2.1, "d": "120 см", "price": 24088, "oldprice": 30110, "url": "https://maxchristmas-store.ru/iskusstevennye_eli/aktsionnye_litye_elki/elka_litaya_lozanna/?offer=4100"}, {"h": "2.4 м", "m": 2.4, "d": "130 см", "price": 30112, "oldprice": 37640, "url": "https://maxchristmas-store.ru/iskusstevennye_eli/aktsionnye_litye_elki/elka_litaya_lozanna/?offer=4101"}], "price_from": 9032, "m_min": 1.2, "m_max": 2.4, "title": "Лозанна", "subtitle": "Тонкая проработка веток", "kind": "green"}, {"family": "Фаворит", "picture": "https://maxchristmas-store.ru/upload/iblock/867/1g36gnbzuhol1qaepdv50gsndaoiyf5u.jpg", "url": "https://maxchristmas-store.ru/iskusstevennye_eli/aktsionnye_litye_elki/elka_litaya_favorit/", "heights": [{"h": "1.5 м", "m": 1.5, "d": "100 см", "price": 10992, "oldprice": 13739, "url": "https://maxchristmas-store.ru/iskusstevennye_eli/aktsionnye_litye_elki/elka_litaya_favorit/?offer=4616"}, {"h": "1.8 м", "m": 1.8, "d": "118 см", "price": 15811, "oldprice": 19763, "url": "https://maxchristmas-store.ru/iskusstevennye_eli/aktsionnye_litye_elki/elka_litaya_favorit/?offer=4617"}, {"h": "2.1 м", "m": 2.1, "d": "136 см", "price": 21134, "oldprice": 26417, "url": "https://maxchristmas-store.ru/iskusstevennye_eli/aktsionnye_litye_elki/elka_litaya_favorit/?offer=4618"}, {"h": "2.4 м", "m": 2.4, "d": "146 см", "price": 28047, "oldprice": 35058, "url": "https://maxchristmas-store.ru/iskusstevennye_eli/aktsionnye_litye_elki/elka_litaya_favorit/?offer=4619"}], "price_from": 10992, "m_min": 1.5, "m_max": 2.4, "title": "Фаворит", "subtitle": "Объёмная, парадная", "kind": "green"}, {"family": "Сибирская широкая", "picture": "https://maxchristmas-store.ru/upload/iblock/3fb/pwvnc3pt6j5iyhkfleuqvxxg36a3poyn.jpg", "url": "https://maxchristmas-store.ru/iskusstevennye_eli/aktsionnye_litye_elki/elka_litaya_sibirskaya_shirokaya/", "heights": [{"h": "1.8 м", "m": 1.8, "d": "139 см", "price": 18399, "oldprice": 22998, "url": "https://maxchristmas-store.ru/iskusstevennye_eli/aktsionnye_litye_elki/elka_litaya_sibirskaya_shirokaya/?offer=4613"}, {"h": "2.1 м", "m": 2.1, "d": "168 см", "price": 28668, "oldprice": 35835, "url": "https://maxchristmas-store.ru/iskusstevennye_eli/aktsionnye_litye_elki/elka_litaya_sibirskaya_shirokaya/?offer=4614"}, {"h": "2.4 м", "m": 2.4, "d": "180 см", "price": 35640, "oldprice": 44550, "url": "https://maxchristmas-store.ru/iskusstevennye_eli/aktsionnye_litye_elki/elka_litaya_sibirskaya_shirokaya/?offer=4615"}], "price_from": 18399, "m_min": 1.8, "m_max": 2.4, "title": "Сибирская широкая", "subtitle": "Для просторных комнат", "kind": "green"}, {"family": "Елка искусственная Сказочная премиум", "picture": "https://maxchristmas-store.ru/upload/iblock/75a/6yrj3637qk02dgnoer0losdkaazx15go.jpg", "url": "https://maxchristmas-store.ru/iskusstevennye_eli/aktsionnye_litye_elki/elka_iskusstvennaya_skazochnaya_premium/", "heights": [{"h": "1.8 м", "m": 1.8, "d": "115 см", "price": 9213, "oldprice": 11516, "url": "https://maxchristmas-store.ru/iskusstevennye_eli/aktsionnye_litye_elki/elka_iskusstvennaya_skazochnaya_premium/?offer=4599"}, {"h": "2.1 м", "m": 2.1, "d": "135 см", "price": 12700, "oldprice": 15875, "url": "https://maxchristmas-store.ru/iskusstevennye_eli/aktsionnye_litye_elki/elka_iskusstvennaya_skazochnaya_premium/?offer=4600"}], "price_from": 9213, "m_min": 1.8, "m_max": 2.1, "title": "Сказочная премиум", "subtitle": "Плотная крона, крупная хвоя", "kind": "green"}, {"family": "Ель искусственная литая Криель", "picture": "https://maxchristmas-store.ru/upload/iblock/e19/8ajy7ps8gtn2us0bgnp1z7655hwgo4a9.jpg", "url": "https://maxchristmas-store.ru/iskusstevennye_eli/aktsionnye_litye_elki/el_iskusstvennaya_litaya_kriel/", "heights": [{"h": "1.95 м", "m": 1.95, "d": "75 cм", "price": 11056, "oldprice": 13820, "url": "https://maxchristmas-store.ru/iskusstevennye_eli/aktsionnye_litye_elki/el_iskusstvennaya_litaya_kriel/?offer=4552"}], "price_from": 11056, "m_min": 1.95, "m_max": 1.95, "title": "Криель", "subtitle": "Узкая, под ёлочный угол", "kind": "green"}, {"family": "Ель настольная Уральская", "picture": "https://maxchristmas-store.ru/upload/iblock/e63/77aoweidj2j8xwrz0zz9ebtnfjndcvnb.jpg", "url": "https://maxchristmas-store.ru/iskusstevennye_eli/aktsionnye_litye_elki/el_nastolnaya_uralskaya/", "heights": [{"h": "60 см", "m": 0.6, "d": "50 cм", "price": 2208, "oldprice": 2760, "url": "https://maxchristmas-store.ru/iskusstevennye_eli/aktsionnye_litye_elki/el_nastolnaya_uralskaya/?offer=4559"}], "price_from": 2208, "m_min": 0.6, "m_max": 0.6, "title": "Уральская настольная", "subtitle": "На стол, полку, подоконник", "kind": "table"}, {"family": "Ель настольная Пряная", "picture": "https://maxchristmas-store.ru/upload/iblock/f5c/ipgd9v96z8jgo9kz8kinlakr00h5kwhb.jpg", "url": "https://maxchristmas-store.ru/iskusstevennye_eli/aktsionnye_litye_elki/el_nastolnaya_pryanaya/", "heights": [{"h": "60 см", "m": 0.6, "d": "47 cм", "price": 2480, "oldprice": 3100, "url": "https://maxchristmas-store.ru/iskusstevennye_eli/aktsionnye_litye_elki/el_nastolnaya_pryanaya/?offer=4561"}], "price_from": 2480, "m_min": 0.6, "m_max": 0.6, "title": "Пряная настольная", "subtitle": "Компактная", "kind": "table"}, {"family": "Ель настольная Венецианская", "picture": "https://maxchristmas-store.ru/upload/iblock/5e1/i4p8d2vk2lq1z23lhy8qp4yf6lw32gzr.jpg", "url": "https://maxchristmas-store.ru/iskusstevennye_eli/aktsionnye_litye_elki/el_nastolnaya_venetsianskaya/", "heights": [{"h": "60 см", "m": 0.6, "d": "38 cм", "price": 2288, "oldprice": 2860, "url": "https://maxchristmas-store.ru/iskusstevennye_eli/aktsionnye_litye_elki/el_nastolnaya_venetsianskaya/?offer=4563"}], "price_from": 2288, "m_min": 0.6, "m_max": 0.6, "title": "Венецианская настольная", "subtitle": "Для небольшой квартиры", "kind": "table"}]};
@@ -964,6 +967,50 @@ window.ELUSHKA = {"updated": "09.08.2026", "source": "/Users/mariapogorelova/Dow
     }
     revRail.innerHTML = html;
   }
+
+  /* ---------- отзыв на весь экран ---------- */
+  (function(){
+    var lb = document.getElementById('lb');
+    if(!lb) return;
+    var img = document.getElementById('lb-img');
+    var cnt = document.getElementById('lb-count');
+    var shots = [], cur = 0;
+
+    function open(i){
+      shots = [].slice.call(document.querySelectorAll('.shot-r img'));
+      cur = i;
+      show();
+      lb.classList.add('is-on');
+      document.body.style.overflow = 'hidden';
+    }
+    function show(){
+      if(!shots.length) return;
+      cur = (cur + shots.length) % shots.length;
+      img.src = shots[cur].src;
+      cnt.textContent = (cur + 1) + ' / ' + shots.length;
+    }
+    function close(){
+      lb.classList.remove('is-on');
+      document.body.style.overflow = '';
+    }
+
+    document.addEventListener('click', function(e){
+      var s = e.target.closest('.shot-r');
+      if(!s) return;
+      var all = [].slice.call(document.querySelectorAll('.shot-r'));
+      open(all.indexOf(s));
+    });
+    document.getElementById('lb-close').addEventListener('click', close);
+    document.getElementById('lb-prev').addEventListener('click', function(e){ e.stopPropagation(); cur--; show(); });
+    document.getElementById('lb-next').addEventListener('click', function(e){ e.stopPropagation(); cur++; show(); });
+    lb.addEventListener('click', function(e){ if(e.target === lb || e.target === img) close(); });
+    document.addEventListener('keydown', function(e){
+      if(!lb.classList.contains('is-on')) return;
+      if(e.key === 'Escape') close();
+      if(e.key === 'ArrowLeft'){ cur--; show(); }
+      if(e.key === 'ArrowRight'){ cur++; show(); }
+    });
+  })();
 
   /* ---------- каталог + шкала высот ---------- */
   var grid = document.getElementById('grid');
