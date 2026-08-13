@@ -1,13 +1,13 @@
 {
- "updated": "09.08.2026",
- "source": "/Users/mariapogorelova/Downloads/FID_ELUSHKA-2.xml",
+ "updated": "13.08.2026",
+ "source": "https://maxchristmas-store.ru/bitrix/catalog_export/FID_ELUSHKA.xml",
  "min_price": 2208,
  "models_total": 20,
  "showcase": [
   {
    "family": "Уральская",
    "full_name": "Елка литая Уральская",
-   "picture": "https://maxchristmas-store.ru/upload/iblock/8ab/tpc5owg2abdk4pztyftk5ny3jm7204qo.jpg",
+   "picture": "assets/catalog/6db268afa0.webp",
    "url": "https://maxchristmas-store.ru/iskusstevennye_eli/aktsionnye_litye_elki/el_iskusstvennaya_uralskaya/",
    "heights": [
     {
@@ -61,7 +61,7 @@
   {
    "family": "Донская",
    "full_name": "Елка литая Донская",
-   "picture": "https://maxchristmas-store.ru/upload/iblock/773/m6ghymjje2n5yh2d6kr5bnf6hxio0y25.jpg",
+   "picture": "assets/catalog/80a05ec412.webp",
    "url": "https://maxchristmas-store.ru/iskusstevennye_eli/aktsionnye_litye_elki/elka_litaya_donskaya/",
    "heights": [
     {
@@ -107,7 +107,7 @@
   {
    "family": "Королевская",
    "full_name": "Елка литая Королевская",
-   "picture": "https://maxchristmas-store.ru/upload/iblock/e2f/athn46nttlaccah0pulb0b7b2ucppqya.jpg",
+   "picture": "assets/catalog/e946b7bb9e.webp",
    "url": "https://maxchristmas-store.ru/iskusstevennye_eli/aktsionnye_litye_elki/elka_litaya_korolevskaya/",
    "heights": [
     {
@@ -153,7 +153,7 @@
   {
    "family": "Алёнушка",
    "full_name": "Елка литая Алёнушка",
-   "picture": "https://maxchristmas-store.ru/upload/iblock/b57/r21w6vzyesizri30vtpb32br0utzlpsh.jpg",
+   "picture": "assets/catalog/91a9dc3ac9.webp",
    "url": "https://maxchristmas-store.ru/iskusstevennye_eli/aktsionnye_litye_elki/elka_litaya_alyenushka/",
    "heights": [
     {
@@ -191,7 +191,7 @@
   {
    "family": "Заснеженная литая елка Уральская",
    "full_name": "Заснеженная литая елка Уральская",
-   "picture": "https://maxchristmas-store.ru/upload/iblock/c41/chp0s6vtqjsy3akwa12jhp2qltmdr4b9.jpg",
+   "picture": "assets/catalog/135f29a08d.webp",
    "url": "https://maxchristmas-store.ru/iskusstevennye_eli/aktsionnye_litye_elki/zasnezhennaya_litaya_elka_uralskaya/",
    "heights": [
     {
@@ -245,7 +245,7 @@
   {
    "family": "Заснеженная литая елка Донская",
    "full_name": "Заснеженная литая елка Донская",
-   "picture": "https://maxchristmas-store.ru/upload/iblock/97b/jpw1br5kkdq1chvzdcnwww8auxxvcto0.jpg",
+   "picture": "assets/catalog/d0311c6c3c.webp",
    "url": "https://maxchristmas-store.ru/iskusstevennye_eli/aktsionnye_litye_elki/zasnezhennaya_litaya_elka_donskaya/",
    "heights": [
     {
@@ -291,7 +291,7 @@
   {
    "family": "Королевская заснеженная",
    "full_name": "Елка литая Королевская заснеженная",
-   "picture": "https://maxchristmas-store.ru/upload/iblock/aaf/13xhafps8m4v2lgb3xyiq7hvowc3wo2j.jpg",
+   "picture": "assets/catalog/e7e8aed339.webp",
    "url": "https://maxchristmas-store.ru/iskusstevennye_eli/aktsionnye_litye_elki/elka_litaya_korolevskaya_zasnezhennaya/",
    "heights": [
     {
@@ -337,7 +337,7 @@
   {
    "family": "Елка искусственная Сказочная заснеженная",
    "full_name": "Елка искусственная Сказочная заснеженная",
-   "picture": "https://maxchristmas-store.ru/upload/iblock/f91/w0axp9ngpntrbn96pcaats83cxwqcl3z.jpg",
+   "picture": "assets/catalog/3609fcf8aa.webp",
    "url": "https://maxchristmas-store.ru/iskusstevennye_eli/aktsionnye_litye_elki/elka_iskusstvennaya_skazochnaya_zasnezhennaya_yelushka/",
    "heights": [
     {
@@ -375,7 +375,7 @@
   {
    "family": "Люблинская",
    "full_name": "Елка литая Люблинская",
-   "picture": "https://maxchristmas-store.ru/upload/iblock/18a/b81bz7x4njp2r3jg6umm90y2z6lnvc7s.jpg",
+   "picture": "assets/catalog/34207ab911.webp",
    "url": "https://maxchristmas-store.ru/iskusstevennye_eli/aktsionnye_litye_elki/elka_litaya_lyublinskaya/",
    "heights": [
     {
@@ -421,7 +421,7 @@
   {
    "family": "Ивановская",
    "full_name": "Елка литая Ивановская",
-   "picture": "https://maxchristmas-store.ru/upload/iblock/e47/h7aspw5re7dcb6jj0lhz0z087z90ztoa.jpg",
+   "picture": "assets/catalog/781dcf9dfa.webp",
    "url": "https://maxchristmas-store.ru/iskusstevennye_eli/aktsionnye_litye_elki/elka_litaya_ivanovskaya/",
    "heights": [
     {
@@ -467,7 +467,7 @@
   {
    "family": "Марьинская",
    "full_name": "Елка литая Марьинская",
-   "picture": "https://maxchristmas-store.ru/upload/iblock/89c/wvrxkgfmjdz3ysxqjc8z7v61ghi480jg.jpg",
+   "picture": "assets/catalog/fcf136266a.webp",
    "url": "https://maxchristmas-store.ru/iskusstevennye_eli/aktsionnye_litye_elki/elka_litaya_marinskaya/",
    "heights": [
     {
@@ -513,7 +513,7 @@
   {
    "family": "Подольская",
    "full_name": "Елка литая Подольская",
-   "picture": "https://maxchristmas-store.ru/upload/iblock/f84/hekxkkn817xgujurk6msaeulsqc3fsti.jpg",
+   "picture": "assets/catalog/e5471c92dc.webp",
    "url": "https://maxchristmas-store.ru/iskusstevennye_eli/aktsionnye_litye_elki/elka_litaya_podolskaya/",
    "heights": [
     {
@@ -559,7 +559,7 @@
   {
    "family": "Лозанна",
    "full_name": "Елка литая Лозанна",
-   "picture": "https://maxchristmas-store.ru/upload/iblock/35a/icc7usany8tjsp43p3oq6ymhlbse36aj.jpg",
+   "picture": "assets/catalog/d5836209aa.webp",
    "url": "https://maxchristmas-store.ru/iskusstevennye_eli/aktsionnye_litye_elki/elka_litaya_lozanna/",
    "heights": [
     {
@@ -613,7 +613,7 @@
   {
    "family": "Фаворит",
    "full_name": "Елка литая Фаворит",
-   "picture": "https://maxchristmas-store.ru/upload/iblock/867/1g36gnbzuhol1qaepdv50gsndaoiyf5u.jpg",
+   "picture": "assets/catalog/cb945ecd29.webp",
    "url": "https://maxchristmas-store.ru/iskusstevennye_eli/aktsionnye_litye_elki/elka_litaya_favorit/",
    "heights": [
     {
@@ -659,7 +659,7 @@
   {
    "family": "Сибирская широкая",
    "full_name": "Елка литая Сибирская широкая",
-   "picture": "https://maxchristmas-store.ru/upload/iblock/3fb/pwvnc3pt6j5iyhkfleuqvxxg36a3poyn.jpg",
+   "picture": "assets/catalog/63e0347211.webp",
    "url": "https://maxchristmas-store.ru/iskusstevennye_eli/aktsionnye_litye_elki/elka_litaya_sibirskaya_shirokaya/",
    "heights": [
     {
@@ -697,7 +697,7 @@
   {
    "family": "Елка искусственная Сказочная премиум",
    "full_name": "Елка искусственная Сказочная премиум",
-   "picture": "https://maxchristmas-store.ru/upload/iblock/75a/6yrj3637qk02dgnoer0losdkaazx15go.jpg",
+   "picture": "assets/catalog/3da8ffe829.webp",
    "url": "https://maxchristmas-store.ru/iskusstevennye_eli/aktsionnye_litye_elki/elka_iskusstvennaya_skazochnaya_premium/",
    "heights": [
     {
@@ -725,31 +725,9 @@
    "kind": "green"
   },
   {
-   "family": "Ель искусственная литая Криель",
-   "full_name": "Ель искусственная литая Криель",
-   "picture": "https://maxchristmas-store.ru/upload/iblock/e19/8ajy7ps8gtn2us0bgnp1z7655hwgo4a9.jpg",
-   "url": "https://maxchristmas-store.ru/iskusstevennye_eli/aktsionnye_litye_elki/el_iskusstvennaya_litaya_kriel/",
-   "heights": [
-    {
-     "h": "1.95 м",
-     "m": 1.95,
-     "d": "75 cм",
-     "price": 11056,
-     "oldprice": 13820,
-     "url": "https://maxchristmas-store.ru/iskusstevennye_eli/aktsionnye_litye_elki/el_iskusstvennaya_litaya_kriel/?offer=4552"
-    }
-   ],
-   "price_from": 11056,
-   "m_min": 1.95,
-   "m_max": 1.95,
-   "title": "Криель",
-   "subtitle": "Узкая, под ёлочный угол",
-   "kind": "green"
-  },
-  {
    "family": "Ель настольная Уральская",
    "full_name": "Ель настольная Уральская",
-   "picture": "https://maxchristmas-store.ru/upload/iblock/e63/77aoweidj2j8xwrz0zz9ebtnfjndcvnb.jpg",
+   "picture": "assets/catalog/d34ace9091.webp",
    "url": "https://maxchristmas-store.ru/iskusstevennye_eli/aktsionnye_litye_elki/el_nastolnaya_uralskaya/",
    "heights": [
     {
@@ -771,7 +749,7 @@
   {
    "family": "Ель настольная Пряная",
    "full_name": "Ель настольная Пряная",
-   "picture": "https://maxchristmas-store.ru/upload/iblock/f5c/ipgd9v96z8jgo9kz8kinlakr00h5kwhb.jpg",
+   "picture": "assets/catalog/76781e9be2.webp",
    "url": "https://maxchristmas-store.ru/iskusstevennye_eli/aktsionnye_litye_elki/el_nastolnaya_pryanaya/",
    "heights": [
     {
@@ -793,7 +771,7 @@
   {
    "family": "Ель настольная Венецианская",
    "full_name": "Ель настольная Венецианская",
-   "picture": "https://maxchristmas-store.ru/upload/iblock/5e1/i4p8d2vk2lq1z23lhy8qp4yf6lw32gzr.jpg",
+   "picture": "assets/catalog/9350c07b7f.webp",
    "url": "https://maxchristmas-store.ru/iskusstevennye_eli/aktsionnye_litye_elki/el_nastolnaya_venetsianskaya/",
    "heights": [
     {

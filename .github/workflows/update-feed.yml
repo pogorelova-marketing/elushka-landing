@@ -1,0 +1,36 @@
+name: Обновление каталога из фида
+
+# Раз в месяц, 1-го числа в 06:00 по Москве (03:00 UTC).
+# Плюс кнопка ручного запуска во вкладке Actions.
+on:
+  schedule:
+    - cron: '0 3 1 * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Поставить ffmpeg (нужен для сжатия картинок в WebP)
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+
+      - name: Обновить каталог из фида Max Christmas
+        run: python3 tools/update_feed.py
+
+      - name: Закоммитить, если что-то изменилось
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet; then
+            echo "Цены и модели не менялись — коммит не нужен"
+          else
+            git add -A
+            git commit -m "Каталог обновлён из фида $(date +%d.%m.%Y)"
+            git push
+            echo "Каталог обновлён и опубликован"
+          fi

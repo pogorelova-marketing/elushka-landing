@@ -17,9 +17,12 @@
 Зависимостей нет, только стандартная библиотека.
 """
 
+import hashlib
 import json
 import os
 import re
+import shutil
+import subprocess
 import sys
 import urllib.request
 import xml.etree.ElementTree as ET
@@ -33,6 +36,62 @@ INDEX = os.path.join(ROOT, "index.html")
 
 BEGIN = "/* MODELS-DATA:BEGIN */"
 END = "/* MODELS-DATA:END */"
+
+# Картинки моделей забираем к себе и сжимаем в WebP: на сайте Max Christmas
+# каждая весит около 700 КБ, после сжатия — примерно 60 КБ.
+PICS_DIR = os.path.join(ROOT, "assets", "catalog")
+PICS_REL = "assets/catalog"
+
+
+def webp_encoder():
+    """Чем сжимать: cwebp, ffmpeg или ничего (тогда оставляем внешние ссылки)."""
+    for name, cmd in (("cwebp", ["cwebp", "-version"]), ("ffmpeg", ["ffmpeg", "-version"])):
+        if shutil.which(name):
+            return name
+    # ffmpeg, вшитый в приложение на Маке
+    for app in ("DAVE", "HAL"):
+        p = f"/Applications/{app}.app/Contents/Resources/binaries/ffmpeg"
+        if os.path.exists(p):
+            return p
+        p = f"/Volumes/{app}/{app}.app/Contents/Resources/binaries/ffmpeg"
+        if os.path.exists(p):
+            return p
+    return None
+
+
+def localize_picture(url, enc):
+    """Скачивает картинку модели и кладёт рядом в WebP. Возвращает локальный путь."""
+    if not url or not enc:
+        return url
+    name = hashlib.md5(url.encode()).hexdigest()[:10] + ".webp"
+    out = os.path.join(PICS_DIR, name)
+    rel = f"{PICS_REL}/{name}"
+    if os.path.exists(out):
+        return rel
+
+    os.makedirs(PICS_DIR, exist_ok=True)
+    tmp = out + ".src"
+    try:
+        req = urllib.request.Request(url, headers={"User-Agent": "elushka-landing/1.0"})
+        with urllib.request.urlopen(req, timeout=40) as r, open(tmp, "wb") as f:
+            f.write(r.read())
+    except Exception as e:
+        print(f"  ! не скачалась картинка {url}: {e}")
+        return url
+
+    try:
+        if enc.endswith("cwebp"):
+            cmd = [enc, "-q", "80", "-resize", "800", "0", tmp, "-o", out]
+        else:
+            cmd = [enc, "-y", "-v", "error", "-i", tmp,
+                   "-vf", "scale=800:-1", "-c:v", "libwebp", "-quality", "80", out]
+        subprocess.run(cmd, check=True, capture_output=True)
+    except Exception as e:
+        print(f"  ! не сжалась картинка {url}: {e}")
+        os.remove(tmp)
+        return url
+    os.remove(tmp)
+    return rel
 
 # Витрина: как модель зовётся в фиде → как показываем → короткое пояснение.
 # Порядок здесь = порядок на странице.
@@ -151,6 +210,10 @@ def main():
         g["m_min"] = g["heights"][0]["m"]
         g["m_max"] = g["heights"][-1]["m"]
 
+    enc = webp_encoder()
+    if not enc:
+        print("  ! WebP-кодировщик не найден — картинки останутся внешними")
+
     showcase = []
     for feed_name, title, subtitle in SHOWCASE:
         g = groups.get(feed_name)
@@ -161,6 +224,12 @@ def main():
         item["title"] = title
         item["subtitle"] = subtitle
         item["kind"] = kind_of(title, subtitle)
+        pic = localize_picture(g["picture"], enc)
+        if enc and not pic.startswith(PICS_REL):
+            # картинки нет на сайте Max Christmas — карточка была бы пустой
+            print(f"  ! «{title}» пропущена: в фиде битая ссылка на фото")
+            continue
+        item["picture"] = pic
         showcase.append(item)
 
     data = {
