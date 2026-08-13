@@ -1,0 +1,11 @@
+# Боевая версия robots.txt для elushka.ru
+# ЗАМЕНИТЬ им robots.txt в день запуска — см. ИНСТРУКЦИЯ-ЗАПУСК.md, шаг 4
+# (файл нужно переименовать в robots.txt, этот оставить или удалить)
+
+User-agent: *
+Allow: /
+Disallow: /assets/fonts/
+Disallow: /data/
+Disallow: /tools/
+
+Sitemap: https://elushka.ru/sitemap.xml
