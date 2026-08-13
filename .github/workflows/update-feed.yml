@@ -27,10 +27,53 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           if git diff --quiet; then
-            echo "Цены и модели не менялись — коммит не нужен"
+            echo "Цены и модели не менялись"
           else
             git add -A
             git commit -m "Каталог обновлён из фида $(date +%d.%m.%Y)"
             git push
-            echo "Каталог обновлён и опубликован"
+            echo "Каталог обновлён"
           fi
+
+      # Выгрузка на хостинг. Работает, только если в настройках репозитория
+      # заданы секреты FTP_HOST / FTP_USER / FTP_PASSWORD (и при необходимости FTP_DIR).
+      # Если секретов нет — шаг тихо пропускается.
+      - name: Выложить обновление на хостинг
+        if: ${{ vars.DEPLOY_FTP == 'on' }}
+        env:
+          FTP_HOST: ${{ secrets.FTP_HOST }}
+          FTP_USER: ${{ secrets.FTP_USER }}
+          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+          FTP_DIR: ${{ secrets.FTP_DIR }}
+        run: |
+          if [ -z "$FTP_HOST" ] || [ -z "$FTP_USER" ] || [ -z "$FTP_PASSWORD" ]; then
+            echo "Доступы к хостингу не заданы — выгрузка пропущена"
+            exit 0
+          fi
+          sudo apt-get install -y -qq lftp
+          TARGET="${FTP_DIR:-/public_html}"
+
+          # Заливаем только то, что нужно сайту. Ничего лишнего не удаляем.
+          lftp -c "
+            set ssl:verify-certificate no;
+            set ftp:ssl-force true;
+            set ftp:ssl-protect-data true;
+            open -u '$FTP_USER','$FTP_PASSWORD' '$FTP_HOST';
+            cd '$TARGET';
+            put -O . index.html;
+            put -O . privacy.html;
+            put -O . sitemap.xml;
+            mirror -R --only-newer --verbose=1 assets assets;
+          " || {
+            echo 'Не удалось выгрузить по FTPS, пробуем обычный FTP'
+            lftp -c "
+              set ftp:ssl-allow no;
+              open -u '$FTP_USER','$FTP_PASSWORD' '$FTP_HOST';
+              cd '$TARGET';
+              put -O . index.html;
+              put -O . privacy.html;
+              put -O . sitemap.xml;
+              mirror -R --only-newer --verbose=1 assets assets;
+            "
+          }
+          echo "Файлы выгружены на хостинг"
