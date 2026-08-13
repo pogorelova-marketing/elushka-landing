@@ -154,11 +154,11 @@ strong{font-weight:500}
   <p>Мы не продаём и не передаём данные для чужой рекламы. Обезличенная статистика доступна сервисам,
      которые её собирают:</p>
   <ul>
-    <li><strong>Яндекс Метрика</strong> — веб-аналитика (ООО «Яндекс», Москва)</li>
-    <li><strong>Google Analytics</strong> — веб-аналитика, если счётчик подключён (Google LLC)</li>
+    <li><strong>Яндекс Метрика</strong> — веб-аналитика (ООО «Яндекс», Москва).
+        Счётчик № 100250379, включены карта кликов и запись сессий (Вебвизор)</li>
   </ul>
   <p>
-    Эти сервисы получают только технические сведения о визите и не сопоставляют их с вашим именем.
+    Сервис получает только технические сведения о визите и не сопоставляет их с вашим именем.
     Кроме того, данные могут быть переданы государственным органам, если этого требует закон.
   </p>
 
@@ -216,6 +216,30 @@ strong{font-weight:500}
     <span><a href="index.html">Вернуться на главную →</a></span>
   </div>
 </footer>
+
+
+<!-- Яндекс Метрика. Счётчик тот же, что на старом сайте Ёлушки: 100250379.
+     На превью-адресе (github.io) не запускается, чтобы не портить статистику. -->
+<script>
+(function(){
+  var HOSTS = ['elushka.ru', 'www.elushka.ru'];
+  if(HOSTS.indexOf(location.hostname) < 0 && location.hostname !== 'localhost') return;
+
+  (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+  m[i].l=1*new Date();
+  for(var j=0;j<document.scripts.length;j++){if(document.scripts[j].src===r){return;}}
+  k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+  (window,document,'script','https://mc.yandex.ru/metrika/tag.js','ym');
+
+  ym(100250379, 'init', {
+    clickmap: true,            // карта кликов
+    trackLinks: true,          // переходы по внешним ссылкам
+    accurateTrackBounce: true, // точный показатель отказов
+    webvisor: true             // запись сессий
+  });
+})();
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/100250379" style="position:absolute;left:-9999px" alt=""></div></noscript>
 
 </body>
 </html>
